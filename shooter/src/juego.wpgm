@@ -1,0 +1,14 @@
+import wollok.game.*
+import jugador.*
+import niveles.*
+
+program Game {
+	game.title("shooter")
+	game.height(20)
+	game.width(20)
+	
+	nivel1.iniciar()
+	game.showAttributes(jugador) //Debug
+
+	game.start()
+}
