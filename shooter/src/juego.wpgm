@@ -4,8 +4,9 @@ import niveles.*
 
 program Game {
 	game.title("shooter")
-	game.height(20)
-	game.width(20)
+	game.height(29)
+	game.width(60)
+	game.cellSize(35)
 	
 	nivel1.iniciar()
 	game.showAttributes(jugador) //Debug

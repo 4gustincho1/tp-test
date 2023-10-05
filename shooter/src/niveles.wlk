@@ -19,12 +19,35 @@ object config {
 		keyboard.w().onPressDo({ jugador.irA(jugador.position().up(1))})
 		keyboard.s().onPressDo({ jugador.irA(jugador.position().down(1))})
 		
-		keyboard.left().onPressDo({ jugador.disparar()})
-		keyboard.right().onPressDo({ jugador.disparar()})
-		keyboard.up().onPressDo({ jugador.disparar()})
-		keyboard.down().onPressDo({ jugador.disparar()})
+		keyboard.left().onPressDo({ jugador.dispararArma(izquierda)})
+		keyboard.right().onPressDo({ jugador.dispararArma(derecha)})
+		keyboard.up().onPressDo({ jugador.dispararArma(arriba)})
+		keyboard.down().onPressDo({ jugador.dispararArma(abajo)})
 
 	}
-	
-	
 }
+	
+object derecha {
+	
+	method mover(objeto){return objeto.position().right(1)}	
+}
+
+object izquierda {
+	
+	method mover(objeto){return objeto.position().left(1)}
+		
+}
+
+object arriba {
+	
+	method mover(objeto){return objeto.position().up(1)}
+		
+}
+
+object abajo {
+	
+	method mover(objeto){return objeto.position().down(1)}
+		
+}
+	
+	
