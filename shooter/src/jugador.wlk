@@ -17,39 +17,47 @@ object jugador{
 
 object pistola{
 	var property contador = 6
-	var property cargador = [bala1,bala2,bala3,bala4,bala5,bala6,bala7]
+	var property cargador = [p1,p2,p3,p4,p5,p6,p7]
 	
 	method disparar(direc){
-		self.cargador().get(contador).disparo(direc)
-		contador = contador - 1
-		if (self.vacio()){self.recargar()}
+		if(not self.vacio()){
+			self.cargador().get(contador)._evento()
+			self.cargador().get(contador).disparo(direc)
+			contador = contador - 1
+			if (self.vacio()){self.recargar()}
+		}
 	}
 	
 	method vacio(){return contador == -1}
 	
-	method recargar(){contador = 6}
+	method recargar(){
+		game.schedule(3000,{=> contador = 6 })
+	}
 }
 
 class Proyectil{
 	var property position = game.origin()
+	var evento = "" 
+	
+	method _evento(){evento = (jugador.arma().cargador().get(jugador.arma().contador())).toString()}
 	
 	method image() {return "alpiste.png"}
 	
 	method disparo(direc){
 		game.addVisual(self)
 		position = direc.mover(jugador)
-		game.onTick(100,"fium", {position = direc.mover(self)})
-		game.onCollideDo(self, {event => game.removeVisual(self)})
+		game.onTick(100,evento, {position = direc.mover(self)})
+		game.onCollideDo(self, {event => game.removeVisual(self) game.removeTickEvent(evento)})
 	}
 }
 
-object bala1 inherits Proyectil{}
-object bala2 inherits Proyectil{}
-object bala3 inherits Proyectil{}
-object bala4 inherits Proyectil{}
-object bala5 inherits Proyectil{}
-object bala6 inherits Proyectil{}
-object bala7 inherits Proyectil{}
+object p1 inherits Proyectil{}
+object p2 inherits Proyectil{}
+object p3 inherits Proyectil{}
+object p4 inherits Proyectil{}
+object p5 inherits Proyectil{}
+object p6 inherits Proyectil{}
+object p7 inherits Proyectil{}
 
 object teste{
 	method image(){return "silvestre.png"}

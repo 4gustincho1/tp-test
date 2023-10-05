@@ -6,7 +6,7 @@ object nivel1 {
 	method iniciar() {
 		game.addVisual(jugador)
 		config.teclas()
-		game.addVisualIn(teste, game.at(10,10))
+		game.addVisualIn(teste, game.at(59,0))
 	}
 
 }
