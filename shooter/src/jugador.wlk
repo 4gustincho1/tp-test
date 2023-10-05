@@ -18,13 +18,15 @@ object jugador{
 object pistola{
 	var property contador = 6
 	var property cargador = [p1,p2,p3,p4,p5,p6,p7]
+	var cooldown = 1
 	
 	method disparar(direc){
-		if(not self.vacio()){
+		if(not self.vacio() and cooldown == 1){
 			self.cargador().get(contador)._evento()
 			self.cargador().get(contador).disparo(direc)
 			contador = contador - 1
 			if (self.vacio()){self.recargar()}
+			self._cooldown()
 		}
 	}
 	
@@ -32,6 +34,11 @@ object pistola{
 	
 	method recargar(){
 		game.schedule(3000,{=> contador = 6 })
+	}
+	
+	method _cooldown(){
+		cooldown = 0
+		game.schedule(500,{=> cooldown = 1})
 	}
 }
 
