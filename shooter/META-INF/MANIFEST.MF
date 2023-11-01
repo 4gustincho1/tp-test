@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Automatic-Module-Name: shooter
+Automatic-Module-Name: juego2
 Bundle-ManifestVersion: 2
-Bundle-Name: shooter
+Bundle-Name: juego2
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: shooter; singleton:=true
+Bundle-SymbolicName: juego2; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.ibm.icu,
  org.eclipse.xtext,
