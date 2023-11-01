@@ -1,0 +1,211 @@
+//test "testX" {	assert.that(true)}
+
+// OJO ACORDARNOS DE LOS TEST QUE COMPARAN ARCHIVOS "silvestre.png" TEST ENEMIGOS Y TAMBIEN  TEST DE LA PARED EL ARCHIVO "pared.png"
+// MODIFICARLOS  CUANDO DEFINAMOS LAS IMAGENES 
+
+import wollok.game.*
+import enemigos.*
+import jugador.*
+import niveles.*
+import objetos.*
+import objetosNivel.*
+import hud.*
+import menu.*
+describe "Tests del Juego" {
+
+    method initialize() {
+        game.clear()
+    }
+
+    test "El jugador debería inicializarse correctamente" {
+        const player = jugador 
+        player.iniciar(game.at(5, 5))
+        assert.equals(game.at(5, 5), player.position())
+        assert.equals(JugadorPistola, player.armaSeleccionada())
+    }
+
+   
+    test "El jugador debería poder moverse a una nueva posición" {
+        const player = jugador 
+        player.iniciar(game.at(5, 5))
+        const newPosition = game.at(2, 2)
+        player.irA(newPosition)
+        assert.equals(newPosition, player.position())
+    }
+}
+/*
+describe "Tests del EnemigoBase" {
+
+	method initialize(){
+		game.clear()
+	}
+
+test "El enemigo se inicializa correctamente" {
+const enemigo = new EnemigoBase()
+assert.equals(8, enemigo.vidas.length())
+assert.equals("silvestre.png", enemigo.image())
+assert.equals("tranquilo", enemigo.status())
+  }
+
+test "El enemigo persigue al jugador " {
+        const enemigo = new EnemigoBase()
+        const player = jugador 
+        player.iniciar(game.at(12, 12)) // Establece la posición del jugador según tu juego
+        enemigo.inicializar()
+        enemigo.vigilar()
+        assert.equals(true, enemigo.alineadoX(player))
+        assert.equals(true, enemigo.alineadoY(player))
+        
+}
+
+        
+    }
+
+
+ */
+
+// test niveles.wlk
+describe "Pruebas de los comandos " {
+
+method initialize() {
+game.clear()
+// Inicializa el jugador
+    }
+/*
+test "El jugador se mueve a la izquierda al presionar 'a'" {
+       const initialPosition = game.at(10, 10) // Replace with the appropriate starting position
+    const player =jugador(initialPosition)
+    
+    // Obtiene la posición inicial del jugador
+    const playerPosition = player.position
+
+    // Mueve al jugador una posición a la izquierda utilizando el método irA
+    player.irA(playerPosition.left(1))
+
+    // Verifica que la posición haya cambiado correctamente
+    assert.equals(initialPosition.left(1), player.position())    }
+    
+    test "El jugador se mueve a la derecha al presionar 'd'" {
+    const player = jugador
+        player.irA(game.at(10, 10).right(1))
+        assert.equals(game.at(11, 10), player.position())
+    }
+
+    test "El jugador se mueve hacia arriba al presionar 'w'" {
+    const player = jugador
+        const initialPosition = game.at(10, 10)
+        player.irA(initialPosition.up(1))
+        assert.equals(initialPosition.up(1), player.position())
+    }
+
+    test "El jugador se mueve hacia abajo al presionar 's'" {
+    const player = jugador
+        const initialPosition = game.at(10, 10)
+        player.irA(initialPosition.down(1))
+        assert.equals(initialPosition.down(1), player.position())
+    }
+
+// Test que prueba el comando 1
+test "El jugador cambia de arma al presionar 1" {
+    const player = jugador
+    player.cambioArma(1)
+    // Verifica que la nueva arma sea una cuchillo
+    assert.equals(JugadorCuchillo, player.armaSeleccionada())
+}
+ */
+// Test que prueba el comando 2
+test "El jugador cambia de arma al presionar 2" {
+    const player = jugador
+    player.cambioArma(2)
+    // Verifica que la nueva arma sea una pistola
+    assert.equals(JugadorPistola, player.armaSeleccionada())
+    
+} }
+/*
+// Test que prueba el comando 3
+test "El jugador cambia de arma al presionar 3" {
+    const player = jugador
+    player.cambioArma(3)
+    // Verifica que la nueva arma sea una Rifle
+    assert.equals(JugadorRifle, player.armaSeleccionada())
+}
+// Test que prueba el comando 4
+test "El jugador cambia de arma al presionar 4" {
+    const player = jugador
+    player.cambioArma(4)
+    // Verifica que la nueva arma sea una Granada
+    assert.equals(JugadorGranada, player.armaSeleccionada())
+
+}
+// Test que prueba el comando 5
+test "El jugador cambia de arma al presionar 5" {
+    const player = jugador
+    player.cambioArma(5)
+    // Verifica que la nueva arma sea una LanzadorTeledirigido
+    assert.equals(LanzadorTeledirigido, player.armaSeleccionada())
+}}
+*/
+// test objetos.wlk
+describe "Tests para la Pared" {
+
+    method initialize() {
+        game.clear()
+    }
+
+    test "La pared es solida" {
+        const pared = new Pared()
+        assert.equals(true, pared.solido())
+    }
+
+    test "La pared es golpeable" {
+        const pared = new Pared()
+        assert.equals(true, pared.golpeable())
+    }
+
+    test "La pared no se destruye" {
+        const pared = new Pared()
+        assert.equals(false, pared.destruible())
+    }
+
+    test "La imagen de la pared debe ser 'pared.png'" {
+        const pared = new Pared()
+        assert.equals("pared.png", pared.image())   // tener encuenta si cambiamos imagen modificar 
+    }}
+	
+describe "Tests del Menú" {
+	
+	  method initialize() {   // Limpia el juego antes de cada prueba
+	  game.clear()
+	  }
+
+test "El menú principal debería mostrarse " { // Llama al método iniciar del menú principal
+ menuPrincipal.iniciar()
+ // Comprueba si el objeto menuP está en el juego
+ assert.equals(true, game.hasVisual(menuP))
+ }
+
+test "El menú instrucciones debe mostrarse y eliminarse " {
+// inicializamos y comprobamos ok
+menuPrincipal.iniciar()
+assert.equals(true, game.hasVisual(menuP))
+
+// eliminamos menuIns y verificamos que se elimino
+ menuInstrucciones.iniciar()
+//menuIns.remover()
+//assert.equals(false, game.hasVisual(menuIns))
+}
+
+test "El menú integrantes debe mostrarse y eliminarse " {
+// inicializamos, comprobar menuP este ok
+menuPrincipal.iniciar()
+assert.equals(true, game.hasVisual(menuP))
+
+// elimino menuInt y verificamos que se elimino
+
+menuIntegrantes.iniciar()
+
+menuInt.remover()
+
+assert.equals(false, game.hasVisual(menuInt))
+
+    }}

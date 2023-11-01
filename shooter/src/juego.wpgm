@@ -1,15 +1,25 @@
 import wollok.game.*
 import jugador.*
 import niveles.*
+import enemigos.*
+import objetos.*
+import objetosNivel.*
+import menu.*
+
 
 program Game {
 	game.title("shooter")
-	game.height(29)
+
+	game.height(30)
+
 	game.width(60)
-	game.cellSize(35)
+	game.cellSize(31)
 	
-	nivel1.iniciar()
-	game.showAttributes(jugador) //Debug
+	nivel1.iniciar()//<----- para implementar el menu comentar esto
+	
+	//menuPrincipal.iniciar()//<---- para implementar el menu descomentar esto 
+	
+	game.showAttributes(jugador) //Debug//<--- para implementar el menu comentar esto
 
 	game.start()
 }
